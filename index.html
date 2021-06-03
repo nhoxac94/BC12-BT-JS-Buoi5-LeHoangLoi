@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài tập JS buổi 5</title>
+    
+
+</head>
+<body>
+    <div class="quanLyTuyenSinh">
+        <h2>Bài tập: Quản Lý Tuyển Sinh</h2>
+        <h3>Vui lòng nhập thông tin của bạn</h3>
+        <label for="diemChuan" style="display: inline-block; width: 150px;">Điểm chuẩn hội đồng</label>
+        <input type="text" id="diemChuan" >
+        <br><br>
+        <label for="diemMon1" style="display: inline-block; width: 150px;">Điểm môn thứ nhất</label>
+        <input type="text" id="diemMon1">
+        <br><br>
+        <label for="diemMon2" style="display: inline-block; width: 150px;">Điểm môn thứ hai</label>
+        <input type="text" id="diemMon2">
+        <br><br>
+        <label for="diemMon3" style="display: inline-block; width: 150px;">Điểm môn thứ ba</label>
+        <input type="text" id="diemMon3">
+        <br>
+        <h4>Vui lòng chọn khu vực ưu tiên</h4>
+        <input type="radio" name="khuVuc" id="khuVucA" style="margin-left: 30px;">
+        <label for="khuVucA">Khu Vực A</label>
+        <input type="radio" name="khuVuc" id="khuVucB" style="margin-left: 30px;">
+        <label for="khuVucB">Khu Vực B</label>
+        <input type="radio" name="khuVuc" id="khuVucC" style="margin-left: 30px;">
+        <label for="khuVucC">Khu Vực C</label>
+        <input type="radio" name="khuVuc" id="khuVucKhongUuTien" checked style="margin-left: 30px;">
+        <label for="khuVucKhongUuTien">Không thuộc ưu tiên</label>
+        <br>
+        <h4>Vui lòng chọn đối tượng ưu tiên</h4>
+        <input type="radio" name="doiTuong" id="doiTuong1" style="margin-left: 30px;">
+        <label for="doiTuong1">Đối tượng 1</label>
+        <input type="radio" name="doiTuong" id="doiTuong2" style="margin-left: 30px;">
+        <label for="doiTuong2">Đối tượng 2</label>
+        <input type="radio" name="doiTuong" id="doiTuong3" style="margin-left: 30px;">
+        <label for="doiTuong3">Đối tượng 3</label>
+        <input type="radio" name="doiTuong" id="doiTuongKhongUuTien" checked style="margin-left: 30px;">
+        <label for="doiTuongKhongUuTien">Không thuộc ưu tiên</label>
+        <br><br>
+        <button id="btnTinhDiem" style="margin-left: 200px;padding: 7px 15px;">Kết Quả</button>
+        <div>
+            <h3 id="showKetQuaTuyenSinh"></h3>
+            <h3 id="showKetQuaDiemTongKet"></h3>
+        </div>
+    </div>
+    <br><br>
+    <div class="tinhTienDien">
+        <h2>Bài Tập: Tính tiền điện</h2>
+        <label for="tenNguoiSuDung" >Vui lòng nhập tên người sử dụng</label>
+        <input type="text" id="tenNguoiSuDung">
+        <br><br>
+        <label for="soKW">Số điện sử dụng (kW): </label>
+        <input type="text" id="soKW">
+        <br><br>
+        <button id="btnTinhTienDien" style="margin-left: 200px;padding: 7px 15px;">Tính tiền</button>
+        <p id="showTienDien"></p>
+    </div>
+
+    <script src="./main.js"></script>
+</body>
+</html>
