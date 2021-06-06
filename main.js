@@ -23,10 +23,10 @@ showKetQuaDiemTongKet = getEle ('showKetQuaDiemTongKet');
 
 btnTinhDiem.onclick = function () {
       
-    diemChuan = +getEle ('diemChuan').value;
-    diemMon1 = +getEle ('diemMon1').value;
-    diemMon2 = +getEle ('diemMon2').value;
-    diemMon3 = +getEle ('diemMon3').value;
+    diemChuan = getEle ('diemChuan').value;
+    diemMon1 = getEle ('diemMon1').value;
+    diemMon2 = getEle ('diemMon2').value;
+    diemMon3 = getEle ('diemMon3').value;
     khuVucA = getEle ('khuVucA').checked;
     khuVucB = getEle ('khuVucB').checked;
     khuVucC = getEle ('khuVucC').checked;
@@ -60,17 +60,18 @@ btnTinhDiem.onclick = function () {
     };
 
     //Tinh tỏng điểm
-    if (isNaN(diemMon1) ||isNaN(diemMon2)||isNaN(diemMon3)||isNaN(diemChuan) || diemMon1 < 0 || diemMon1 > 10|| diemMon2 <0 || diemMon2 > 10 || diemMon3 < 0 || diemMon3 > 10 || diemChuan < 0 || diemChuan > 34.5)  {
-        alert('Bạn vui lòng nhập lại điểm')
+    diemTongKet = (+diemMon1 + +diemMon2 + +diemMon3) + diemKhuVuc + diemDoiTuong;
+
+    
+    if (isNaN(diemMon1) ||isNaN(diemMon2)||isNaN(diemMon3)||isNaN(diemChuan) || diemMon1 < 0 || diemMon1 > 10|| diemMon2 < 0 || diemMon2 > 10 || diemMon3 < 0 || diemMon3 > 10 || diemChuan < 0 || diemChuan > 34.5 || diemChuan == '' || diemMon1 == '' || diemMon2 == '' || diemMon3 == '' ){
+        alert('Bạn vui lòng nhập lại thông tin')
     } else if ((diemMon1 == 0) || (diemMon2 == 0)||(diemMon3 == 0)) {
-        diemTongKet = (diemMon1 + diemMon2 + diemMon3) + diemKhuVuc + diemDoiTuong;
-        showKetQuaTuyenSinh.innerHTML = 'Bạn đã rớt';   
-        showKetQuaDiemTongKet.innerHTML = 'Tổng điểm của bạn là: ' + diemTongKet;
+        showKetQuaTuyenSinh.innerHTML = ` <h3 style = "color: red;"> Bạn đã rớt </h3> ` ;   
+        showKetQuaDiemTongKet.innerHTML = `<h3>Tổng điểm của bạn là: ${diemTongKet}</h3>` ;
 
     } else  {
-        diemTongKet = (diemMon1 + diemMon2 + diemMon3) + diemKhuVuc + diemDoiTuong;
-        diemTongKet >= diemChuan ? showKetQuaTuyenSinh.innerHTML = 'Bạn đã đậu' :  showKetQuaTuyenSinh.innerHTML = 'Bạn đã rớt';
-        showKetQuaDiemTongKet.innerHTML = 'Tổng điểm của bạn là: ' + diemTongKet;
+        diemTongKet >= diemChuan ? showKetQuaTuyenSinh.innerHTML = `<h3 style = "color: blue;">Bạn đã đậu</h3>` : showKetQuaTuyenSinh.innerHTML = ` <h3 style = "color: red;"> Bạn đã rớt </h3> `;
+        showKetQuaDiemTongKet.innerHTML =  `<h3>Tổng điểm của bạn là: ${diemTongKet}</h3>`;
 
     };
 }
@@ -93,15 +94,12 @@ function getEleId(id) {
     return document.getElementById(id);
 } 
 
-btnTinhTienDien = getEleId('btnTinhTienDien');
-showTienDien = getEleId('showTienDien');
-
-btnTinhTienDien.onclick = function () {
+function tinhTienDien () {
     var tienDien = 0;
     tenNguoiSuDung = getEleId('tenNguoiSuDung').value;
     soKW = +getEleId('soKW').value;
-    if ((soKW < 0) || (isNaN(soKW))) {
-        alert('Vui lòng nhập lại số kW điện')
+    if ((soKW < 0) || (isNaN(soKW)) || tenNguoiSuDung =='' || soKW == '') {
+        alert('Vui lòng nhập lại thông tin')
     } else {
         if (soKW <= 50) {
             tienDien = soKW*500;
@@ -113,7 +111,12 @@ btnTinhTienDien.onclick = function () {
             tienDien = 50*500 + 50*650 + 100*850 +  (soKW -200)*1100;
         } else {
             tienDien = 50*500 + 50*650 + 100*850 + 150*1100 + (soKW - 350)*1300;
-        }        
+        }  
+        showTienDien.innerHTML = `<h3 style = "color: blue">Tiền điện ${tenNguoiSuDung} cần thanh toán là: ${tienDien.toLocaleString()} vnd     </h3>` 
     }
-    showTienDien.innerHTML = 'Tiền điện ' + tenNguoiSuDung + ' cần thanh toán là: ' + tienDien.toLocaleString() + ' vnd'
 }
+btnTinhTienDien = getEleId('btnTinhTienDien');
+showTienDien = getEleId('showTienDien');
+
+btnTinhTienDien.onclick = tinhTienDien;
+    
