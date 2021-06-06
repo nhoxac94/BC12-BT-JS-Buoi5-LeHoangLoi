@@ -115,6 +115,7 @@ function tinhTienDien () {
         showTienDien.innerHTML = `<h3 style = "color: blue">Tiền điện ${tenNguoiSuDung} cần thanh toán là: ${tienDien.toLocaleString()} vnd     </h3>` 
     }
 }
+
 btnTinhTienDien = getEleId('btnTinhTienDien');
 showTienDien = getEleId('showTienDien');
 
